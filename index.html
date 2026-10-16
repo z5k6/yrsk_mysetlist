@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#172a43">
+<title>ヨルシカ セトリメーカー</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brandmark">♫</div>
+  <div><p class="eyebrow">SETLIST POSTER MAKER</p><h1>ヨルシカ セトリメーカー</h1><p class="sub">曲を選んで、縦長のセトリ画像をつくろう。</p></div>
+</header>
+<main>
+  <section class="panel songs-panel">
+    <div class="section-head"><div><p class="eyebrow">STEP 01</p><h2>曲を選ぶ</h2></div><span id="countBadge" class="count">0曲選択中</span></div>
+    <label class="search-label" for="search">曲名を検索</label>
+    <input id="search" type="search" placeholder="曲名を入力…" autocomplete="off">
+    <div class="quick-actions"><button id="clearAll" class="btn light">選択を全解除</button></div>
+    <div id="songList" class="song-list" aria-label="曲一覧"></div>
+    <div class="add-row"><input id="customSong" type="text" placeholder="一覧にない曲を追加"><button id="addSong" class="btn">追加</button></div>
+    <p class="hint">曲名は一覧の表記をそのまま収録。追加した曲もポスターに反映されます。</p>
+  </section>
+
+  <section class="panel editor-panel">
+    <div class="section-head"><div><p class="eyebrow">STEP 02</p><h2>ポスターを整える</h2></div></div>
+    <div class="field"><label for="posterTitle">タイトル</label><input id="posterTitle" type="text" value="SETLIST"></div>
+    <div class="field"><label for="posterDate">日付・メモ</label><input id="posterDate" type="text" placeholder="例：2026.10.13"></div>
+    <div class="field"><label>完成画像の背景を選ぶ</label><div class="background-options" id="backgroundOptions">
+      <label class="background-option selected"><input type="radio" name="posterBackground" value="cafe" checked><img src="bg-cafe.png" alt="カフェの背景"><span>カフェ</span></label>
+      <label class="background-option"><input type="radio" name="posterBackground" value="chair"><img src="bg-chair.png" alt="椅子の背景"><span>椅子</span></label>
+      <label class="background-option"><input type="radio" name="posterBackground" value="town"><img src="bg-town.png" alt="街並みの背景"><span>街並み</span></label>
+      <label class="background-option"><input type="radio" name="posterBackground" value="sea"><img src="bg-sea.png" alt="海の背景"><span>海</span></label>
+      <label class="background-option"><input type="radio" name="posterBackground" value="sakura"><img src="bg-sakura.png" alt="桜の背景"><span>桜</span></label>
+    </div></div>
+    <div class="field"><label for="textColor">文字色</label><select id="textColor"><option value="dark">濃紺</option><option value="light">白</option><option value="cream" selected>クリーム</option><option value="pink">淡いピンク</option></select></div>
+    <div class="field"><label for="outlineEnabled">文字の縁取り</label><select id="outlineEnabled"><option value="on" selected>あり</option><option value="off">なし</option></select></div>
+    <div class="field"><label for="outlineColor">縁取りの色</label><select id="outlineColor"><option value="navy" selected>紺色</option><option value="white">白</option><option value="black">黒</option></select></div>
+    <div class="field"><label for="outlineWidth">縁取りの太さ <span id="outlineWidthValue">1px</span></label><input id="outlineWidth" type="range" min="1" max="5" step="1" value="1"></div>
+    <div class="field"><label for="subtitle">サブタイトル（任意）</label><input id="subtitle" type="text" placeholder="例：my favorite songs"></div>
+    <div class="field"><label>選んだ曲の順番</label><p class="hint">↑ ↓ で順番を変更できます。</p><div id="selectedList" class="selected-list"></div></div>
+    <div class="export-row"><button id="download" class="btn primary">PNG画像を保存</button><button id="refresh" class="btn light">プレビュー更新</button></div>
+    <p class="hint">画像は縦長・SNS投稿向け（1080 × 1920 px）で保存されます。</p>
+  </section>
+
+  <section class="preview-section">
+    <div class="preview-heading"><div><p class="eyebrow">PREVIEW</p><h2>完成イメージ</h2></div><span class="preview-note">縦長ポスター</span></div>
+    <div class="poster-wrap"><canvas id="poster" width="540" height="960" aria-label="セトリポスターのプレビュー"></canvas></div>
+  </section>
+</main>
+<footer>個人用のセトリ作成ツールです。入力内容はこのページ内で処理されます。</footer>
+<script src="app.js"></script>
+</body>
+</html>
